@@ -8,6 +8,10 @@
     "edk-mcp": "index.js"
   },
   "main": "index.js",
+  "scripts": {
+    "build": "node --check index.js",
+    "start": "node index.js"
+  },
   "files": [
     "index.js",
     "README.md",
