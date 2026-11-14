@@ -1,0 +1,46 @@
+{
+  "name": "@edks/mcp",
+  "version": "0.6.0",
+  "mcpName": "earth.edk/mcp",
+  "description": "EDK-1 MCP server: give Claude, ChatGPT, Cursor, Codex and Gemini a compass for the physical world. Find places, inspect any point, route around hazards and watch areas for change.",
+  "type": "module",
+  "bin": {
+    "edk-mcp": "index.js"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "edk",
+    "geospatial",
+    "maps",
+    "location",
+    "routing",
+    "gis",
+    "agents",
+    "claude",
+    "cursor"
+  ],
+  "homepage": "https://edk.earth/agents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edkearth/mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edkearth/mcp/issues"
+  },
+  "author": "EDK (https://edk.earth)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

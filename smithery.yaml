@@ -1,0 +1,16 @@
+# Smithery: https://smithery.ai/docs/build/project-config
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - edkApiKey
+    properties:
+      edkApiKey:
+        type: string
+        title: EDK API key
+        description: Secret key from https://edk.earth/console/keys (500 free CU every month).
+  commandFunction: |-
+    (config) => ({ command: "node", args: ["index.js"], env: { EDK_API_KEY: config.edkApiKey } })
+  exampleConfig:
+    edkApiKey: edk_sk_your_key
