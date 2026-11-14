@@ -5,25 +5,27 @@
 [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-earth.edk%2Fmcp-9cb46a)](https://registry.modelcontextprotocol.io/v0/servers?search=earth.edk)
 [![License: MIT](https://img.shields.io/badge/license-MIT-8fb3c0)](LICENSE)
 
-A compass for the physical world, for any agent that speaks MCP. Ask in plain language and EDK-1 answers with real places: where things are, what the ground is like, how to get there, and what just changed.
+EDK-1 is a foundation model of the physical world. Trained on 30 billion images, it sees the planet street by street, so your agent can find anything visible on Earth, read what's true there, route around it, and get alerted the moment it changes.
+
+Use EDK when a task depends on what the real world looks like.
 
 ```
 "Graffiti near train stations in Chicago"
-"What's the flood risk and income around 40.44, -79.99?"
-"Drive from Denver to Boulder past a coffee shop, avoiding flood-prone streets"
-"Tell me when new demolition permits are filed in Brooklyn"
+"Storm-damaged roofs in New Orleans"
+"Humpback whales in Monterey Bay"
+"Get me across Pittsburgh avoiding potholed streets"
 ```
 
-Results carry coordinates, imagery and an `embed_url` that opens them on the [EDK Atlas](https://edk.earth/atlas).
+Every result comes back with its location, its photo and an `embed_url` that opens it on the [EDK Atlas](https://edk.earth/atlas).
 
 ## Tools
 
 | Tool | What it does |
 | --- | --- |
-| `edk_discover` | Find places and areas in plain language: things you can see (bridges, graffiti, solar farms), civic records (permits, 311, inspections, crashes) and areas that meet conditions (income, flood depth, tree canopy). Choose `reasoning` from `fast` to `max` for results studied more closely, returned with the feature boxed on its photo. |
-| `edk_inspect` | Everything known about one point: place, highlights and every measured fact by category, from sunlight and soil to jobs and air quality. |
-| `edk_route` | A route from A to B that passes what you want to see and steers around what you want to avoid, with turn-by-turn steps. |
-| `edk_monitor_create` | Watch an area for new events (permits, 311 requests, imagery…) on an interval, delivered by webhook. |
+| `edk_discover` | Ask for objects (graffiti, solar panels, bridges), conditions (storm-damaged roofs, boarded-up windows, potholes), events (crashes, new construction) or nature (humpback whales, alligators, wildflowers), and get each one back with its photo. Or find areas by what's measured there, like flood risk, income or tree canopy. Set `reasoning` from `fast` to `max` to have results studied more closely. |
+| `edk_inspect` | Read what's true at any coordinate, from terrain and hazards to who lives there. |
+| `edk_route` | Get from A to B around what you name, like potholed streets, construction or crash-prone intersections. |
+| `edk_monitor_create` | Watch a place and get each new sighting by webhook. |
 | `edk_monitor_events` | List monitors and the events they found. |
 | `edk_usage` | Compute Unit balance, tier and limits. |
 

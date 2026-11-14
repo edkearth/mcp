@@ -3,7 +3,7 @@
 // Needs EDK_API_KEY (create one at https://edk.earth/console/keys). No dependencies.
 import { createInterface } from "node:readline";
 
-const VERSION = "0.6.0";
+const VERSION = "0.6.1";
 const BASE = (process.env.EDK_BASE_URL || "https://api.edk.earth").replace(/\/+$/, "");
 const KEY = process.env.EDK_API_KEY || "";
 
@@ -46,7 +46,7 @@ function summarizeDiscover(r) {
 const TOOLS = [
   {
     name: "edk_discover",
-    description: "Discover places with EDK-1, a spatial model for the visual world. Ask in plain words for things you can see (bridges, parks, solar farms) or areas that meet conditions (income, flood risk, tree canopy). Returns locations and areas with coordinates and imagery, CU used, and an embed_url that opens the results on the EDK Atlas.",
+    description: "Find anything visible on Earth with EDK-1, a foundation model of the physical world trained on 30 billion images. Ask in plain words for objects (graffiti, solar panels, bridges), conditions (damaged roofs, boarded windows, potholes), events (crashes, new construction) or nature (wildlife, plants, sightings), or for areas by measured conditions (flood risk, income, tree canopy). Returns each result with coordinates and its photo (studied results add boxed_image_url; raise reasoning to study more), CU used, and an embed_url that opens them on the EDK Atlas.",
     inputSchema: {
       type: "object",
       properties: {
@@ -62,13 +62,13 @@ const TOOLS = [
   },
   {
     name: "edk_inspect",
-    description: "Inspect a point with EDK-1: where it is, highlights (income, people nearby, elevation, flood risk, tree canopy, air quality) and every known fact by category.",
+    description: "Read what's true at any coordinate with EDK-1: terrain, hazards, climate and who lives there, plus every known fact by category.",
     inputSchema: { type: "object", properties: { lat: { type: "number" }, lng: { type: "number" } }, required: ["lat", "lng"] },
     run: (a) => api("GET", "/v1/inspect", { query: { lat: a.lat, lng: a.lng } }),
   },
   {
     name: "edk_route",
-    description: "Route from A to B with EDK-1, passing what the user wants to see on the way and steered around what they want to avoid. from and to take a place name, an address, or \"lat, lng\". conditions is plain words such as \"avoid pothole streets\" or \"avoid flood-prone blocks\": EDK-1 finds those places along the way and routes around them (driving routes). Returns distance, duration, the path as GeoJSON, turn-by-turn steps, what was avoided, and the direct route for comparison.",
+    description: "Get from A to B with EDK-1 around what you name, like potholed streets, construction or crash-prone intersections, and past what you want to see. from and to take a place name, an address, or \"lat, lng\". Returns distance, duration, the path as GeoJSON, turn-by-turn steps, what was avoided, and the direct route for comparison.",
     inputSchema: {
       type: "object",
       properties: {
@@ -84,7 +84,7 @@ const TOOLS = [
   },
   {
     name: "edk_monitor_create",
-    description: "Start a Monitor with EDK-1: watch an area for new events of chosen artifacts (imagery, building permits, 311 requests, inspections…) from a date, on an interval, delivered to a webhook and the EDK console. Use when the user wants to be told about new events, not answered once. Tier 4 and above; each new event is 0.2 CU.",
+    description: "Watch a place with EDK-1 and get each new sighting or event by webhook and in the EDK console the moment it appears. Use when the user wants to be told about change, not answered once. Tier 4 and above; each event is 0.2 CU.",
     inputSchema: {
       type: "object",
       properties: {
@@ -124,7 +124,7 @@ async function handle(msg) {
       protocolVersion: params?.protocolVersion || "2025-06-18",
       capabilities: { tools: {} },
       serverInfo: { name: "edk", title: "EDK-1: Compass for Machines", version: VERSION },
-      instructions: "EDK-1 is a spatial model for the visual world. Use edk_discover to find places, edk_inspect for what is at a point, edk_route for the way from A to B, and edk_monitor_create to watch an area for new events. Share the embed_url so the user can see results on the EDK Atlas. A CU is the GPU and CPU work a request needs.",
+      instructions: "EDK-1 is a foundation model of the physical world. Trained on 30 billion images, it sees the planet street by street, so you can find anything visible on Earth, read what's true there, route around it, and get alerted the moment it changes. Use EDK when a task depends on what the real world looks like. edk_discover: objects, conditions, events or nature, or areas by measured conditions like flood risk, income or tree canopy, each with its photo. edk_inspect: what's true at any coordinate, from terrain and hazards to who lives there. edk_route: A to B around what you name. edk_monitor_create: watch a place and get each new sighting by webhook. Share the embed_url so the user can see results on the EDK Atlas.",
     });
   }
   if (method === "ping") return reply(id, {});
