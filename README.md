@@ -10,10 +10,15 @@ EDK-1 is a foundation model of the physical world. Trained on 30 billion images,
 Use EDK when a task depends on what the real world looks like.
 
 ```
-"Graffiti near train stations in Chicago"
-"Storm-damaged roofs in New Orleans"
-"Humpback whales in Monterey Bay"
-"Get me across Pittsburgh avoiding potholed streets"
+"Streetlight issues in New Orleans where median household income is under $40k"
+"Vandalism in Chicago on blocks where most homes are rented"
+"Cyclist accidents in Chicago where over 10% of people walk or bike to work"
+"Cracked asphalt in Sacramento inside flood zones"
+"Desert wildflower blooms in California where annual rainfall is under 200 mm"
+"Fern-filled forests in New Zealand where annual rainfall is over 2,000 mm"
+"Bison herds in South Dakota more than an hour from a city"
+"Accessory dwelling unit permits in Los Angeles where median home value is over $1M"
+"New building permits in New York City inside flood zones"
 ```
 
 Every result comes back with its location, its photo and an `embed_url` that opens it on the [EDK Atlas](https://edk.earth/atlas).
